@@ -1,4 +1,17 @@
 import { tokens } from "../theme";
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
+import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
+import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
+import HelpOutlinedIcon from '@mui/icons-material/HelpOutlined';
+import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
+import PieChartOutlinedIcon from '@mui/icons-material/PieChartOutlined';
+import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+
 
 export const mockDataTeam = [
   {
@@ -1280,4 +1293,19 @@ export const mockGeographyData = [
     id: "KOR",
     value: 171135,
   },
+];
+
+
+export const SidebarItems = [
+  { title: "Dashboard", to: "/", Icon: HomeOutlinedIcon },
+  { title: "Team", to: "/team", Icon: PeopleOutlinedIcon },
+  { title: "Contacts", to: "/contacts", Icon: ContactsOutlinedIcon },
+  { title: "Invoices", to: "/invoices", Icon: ReceiptOutlinedIcon },
+  { title: "Profile", to: "/profile", Icon: PersonOutlinedIcon },
+  { title: "Calendar", to: "/calendar", Icon: CalendarTodayOutlinedIcon },
+  { title: "FAQ", to: "/faq", Icon: HelpOutlinedIcon },
+  { title: "Bar Chart", to: "/bar", Icon: BarChartOutlinedIcon },
+  { title: "Pie Chart", to: "/pie", Icon: PieChartOutlinedIcon },
+  { title: "Line Chart", to: "/timeline", Icon: TimelineOutlinedIcon },
+  { title: "Geography Chart", to: "/menu", Icon: MapOutlinedIcon },
 ];
