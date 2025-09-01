@@ -1301,7 +1301,7 @@ export const SidebarItems = [
   { title: "Team", to: "/team", Icon: PeopleOutlinedIcon },
   { title: "Contacts", to: "/contacts", Icon: ContactsOutlinedIcon },
   { title: "Invoices", to: "/invoices", Icon: ReceiptOutlinedIcon },
-  { title: "Profile", to: "/profile", Icon: PersonOutlinedIcon },
+  { title: "Profile", to: "/form", Icon: PersonOutlinedIcon },
   { title: "Calendar", to: "/calendar", Icon: CalendarTodayOutlinedIcon },
   { title: "FAQ", to: "/faq", Icon: HelpOutlinedIcon },
   { title: "Bar Chart", to: "/bar", Icon: BarChartOutlinedIcon },

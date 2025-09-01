@@ -1,27 +1,28 @@
 import React from 'react'
-import { Box, useTheme } from '@mui/material'
-import { DataGrid, GridToolbar } from '@mui/x-data-grid'
+import { Box, Typography, useTheme } from '@mui/material'
+import { DataGrid} from '@mui/x-data-grid'
 import { tokens } from '../../theme'
-import { mockDataContacts } from '../../data/mockData'
+import { mockDataInvoices } from '../../data/mockData'
 import Header from '../../components/Header'
 const index = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
     { field: "name", headerName: "NAME", flex: 1, cellClassName: "name-cell" },
-    { field: "registrarId", headerName: "REGISTRAR ID" },
     { field: "email", headerName: "EMAIL", flex: 1 },
-    { field: "age", headerName: "AGE", type: "number", headerAlign: "left", align: "left" },
     { field: "phone", headerName: "PHONE", flex: 1 },
-    { field: "address", headerName: "ADDRESS", flex: 1 },
-    { field: "city", headerName: "CITY", flex: 1 },
-    { field: "zipCode", headerName: "ZIP CODE", flex: 1 },
-
-  ]
+    { field: "cost", headerName: "COST", type: "number",headerAlign: "left", cellClassName:"cost-cell", renderCell:(params)=>(
+      <Typography color={colors.greenAccent[500]}>
+          ${params.row.cost}
+        </Typography>
+    ) },
+    { field: "date", headerName: "Date", flex: 1 },
+]
   return (
     <Box m="20px">
-      <Header title="Contacts" subtitle="List of Contacts of team members" />
+      <Header title="Invoices" subtitle="List of Invoice balances" />
       <Box m="40px 0 0 0" height="75vh">
         <DataGrid
           sx={{
@@ -43,20 +44,17 @@ const index = () => {
               borderTop: "none",
               backgroundColor: colors.blueAccent[700]
             },
-            "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-              color: `${colors.grey[100]} !important`,
+            "& .cost-cell":{
+                display:"flex",
+                justifyContent:"start",
+                alignItems:"center"
+            },
+            "& .MuiCheckbox-root": {
+              color: `${colors.greenAccent[200]} !important`,
             }
           }}
-          rows={mockDataContacts}
-          slots={{ toolbar: GridToolbar }}
-          showToolbar
-          slotProps={{
-            toolbar: {
-              showQuickFilter: true,  
-              quickFilterProps: { debounceMs: 500 },
-            },
-          }}
-
+          rows={mockDataInvoices}
+          checkboxSelection
           columns={columns}
         />
       </Box>
