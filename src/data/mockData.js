@@ -1302,10 +1302,10 @@ export const SidebarItems = [
   { title: "Contacts", to: "/contacts", Icon: ContactsOutlinedIcon },
   { title: "Invoices", to: "/invoices", Icon: ReceiptOutlinedIcon },
   { title: "Profile", to: "/form", Icon: PersonOutlinedIcon },
-  { title: "Calendar", to: "/calendar", Icon: CalendarTodayOutlinedIcon },
+  { title: "Calendar", to: "/calender", Icon: CalendarTodayOutlinedIcon },
   { title: "FAQ", to: "/faq", Icon: HelpOutlinedIcon },
   { title: "Bar Chart", to: "/bar", Icon: BarChartOutlinedIcon },
   { title: "Pie Chart", to: "/pie", Icon: PieChartOutlinedIcon },
-  { title: "Line Chart", to: "/timeline", Icon: TimelineOutlinedIcon },
-  { title: "Geography Chart", to: "/menu", Icon: MapOutlinedIcon },
+  { title: "Line Chart", to: "/line", Icon: TimelineOutlinedIcon },
+  { title: "Geography Chart", to: "/geography", Icon: MapOutlinedIcon },
 ];
