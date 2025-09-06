@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, {  useState,useEffect } from "react";
 import {
   Drawer,
   List,
@@ -29,7 +29,7 @@ const Items = ({ title, to, Icon, selected, setSelected, open,isMobile }) => {
       to={to}
       sx={{
         justifyContent: open || isMobile ? "initial" : "center",
-        mt:isMobile ? "40px" : "0px",
+        mt:isMobile ? "10px" : "0px",
         px: 3.5,
         "&.Mui-selected": {
           backgroundColor: colors.greenAccent[700],
@@ -62,19 +62,29 @@ function Sidebar() {
 
   
   const [open, setOpen] = useState(true);
-  const [selected, setSelected] = useState("Dashboard");
+  const [selected, setSelected] = useState(() => {
+    return localStorage.getItem("selectedItem") || "Dashboard";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("selectedItem", selected);
+  }, [selected]);
+
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const toggleDrawer = () => {
     setOpen(!open);
   };
   
+  useEffect(()=>{
+    setOpen(!open)
+  },[selected])
   
   
   return (
     <>
     {isMobile ? 
     <>
-    <Toolbar sx={{ position:"absolute", left:0,top:0, backgroundColor:colors.primary[500], zIndex:50, width:"100%" }}>
+    <Toolbar sx={{ position:"absolute", left:0,top:0, backgroundColor:colors.primary[900], zIndex:50, width:"100%" }}>
       <IconButton onClick={toggleDrawer} sx={{ color: colors.grey[100] }}>
         <MenuIcon />
       </IconButton>
