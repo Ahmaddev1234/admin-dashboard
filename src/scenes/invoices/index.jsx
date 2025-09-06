@@ -23,7 +23,7 @@ const index = () => {
   return (
     <Box m="20px">
       <Header title="Invoices" subtitle="List of Invoice balances" />
-      <Box m="40px 0 0 0" height="75vh" sx={{width:{xs:"90vw",md:"100%"}}} overflowX="scroll" display="flex">
+      <Box m="40px 0 0 0" height="75vh" sx={{width:{xs:"90vw",md:"100%"}}} flexGrow={1}  overflowX="scroll" display="flex">
         <DataGrid
           sx={{
             border: "none",

@@ -24,9 +24,9 @@ const index = () => {
 
   ]
   return (
-    <Box m="20px">
+    <Box m="20px" flex={1} width="full">
       <Header title="Contacts" subtitle="List of Contacts of team members" />
-      <Box  height="auto" m="40px 0 0 0" sx={{width:{xs:"90vw",md:"100%"}}} overflowX="scroll" display="flex">
+      <Box  height="75vh" m="40px 0 0 0" sx={{width:{xs:"90vw",md:"100%"}}} overflowX="scroll" display="flex">
         <DataGrid
           sx={{
             border: "none",

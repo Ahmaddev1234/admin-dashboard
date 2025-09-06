@@ -50,7 +50,7 @@ const Index = () => {
   return (
     <Box m="20px">
       <Header title="Calendar" subtitle="Full interactive calendar" />
-      <Box display="flex" justifyContent="space-between">
+      <Box display="flex" sx={{flexDirection:{xs:"column",md:"row"}}} justifyContent="space-between">
         {/* Sidebar */}
         <Box
           flex="1 1 20%"
