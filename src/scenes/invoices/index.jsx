@@ -9,21 +9,21 @@ const index = () => {
   const colors = tokens(theme.palette.mode);
 
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "name", headerName: "NAME", flex: 1, cellClassName: "name-cell" },
-    { field: "email", headerName: "EMAIL", flex: 1 },
-    { field: "phone", headerName: "PHONE", flex: 1 },
-    { field: "cost", headerName: "COST", type: "number",headerAlign: "left", cellClassName:"cost-cell", renderCell:(params)=>(
+    { field: "id", headerName: "ID", flex: 0.5,minWidth:70 },
+    { field: "name", headerName: "NAME", flex: 1, cellClassName: "name-cell",minWidth:100 },
+    { field: "email", headerName: "EMAIL", flex: 1, minWidth:100 },
+    { field: "phone", headerName: "PHONE", flex: 1,minWidth:150 },
+    { field: "cost", headerName: "COST", type: "number",headerAlign: "left", cellClassName:"cost-cell",minWidth:100, renderCell:(params)=>(
       <Typography color={colors.greenAccent[500]}>
           ${params.row.cost}
         </Typography>
     ) },
-    { field: "date", headerName: "Date", flex: 1 },
+    { field: "date", headerName: "Date", flex: 1,minWidth:100 },
 ]
   return (
     <Box m="20px">
       <Header title="Invoices" subtitle="List of Invoice balances" />
-      <Box m="40px 0 0 0" height="75vh">
+      <Box m="40px 0 0 0" height="75vh" sx={{width:{xs:"90vw",md:"100%"}}} overflowX="scroll" display="flex">
         <DataGrid
           sx={{
             border: "none",

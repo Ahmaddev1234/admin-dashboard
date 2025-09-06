@@ -3,19 +3,19 @@ import { Box, useTheme } from '@mui/material'
 import { mockBarData as data } from '../../data/mockData'
 import { ResponsiveBar } from '@nivo/bar'
 import { tokens } from '../../theme'
-const BarChart = () => {
+const BarChart = ({isDashboard=false}) => {
     const theme=useTheme();
     const colors=tokens(theme.palette.mode)
   return (
     
         
     <ResponsiveBar 
-         /* or Bar for fixed dimensions */
+        
         data={data}
         keys={["hot dog", "burger", "kebab", "donut"]} 
 
         theme={{
-            // added
+            
             axis: {
               domain: {
                 line: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import {
   Drawer,
   List,
@@ -7,22 +7,20 @@ import {
   IconButton,
   useTheme,
   Toolbar,
-  Box
+  Box,
+  useMediaQuery
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Menu, Menu as MenuIcon } from "@mui/icons-material";
+import { Menu as MenuIcon } from "@mui/icons-material";
 import { tokens } from "../../theme";
 import { SidebarItems } from "../../data/mockData";
 
 const drawerWidth = 240;
 const collapsedWidth = 60;
 
-const Items = ({ title, to, Icon, selected, setSelected, open }) => {
-  const theme = useTheme();
+const Items = ({ title, to, Icon, selected, setSelected, open,isMobile }) => {
+  const theme=useTheme()
   const colors = tokens(theme.palette.mode);
-  
-  
-
   return (
     <ListItemButton
       selected={selected === title}
@@ -30,7 +28,8 @@ const Items = ({ title, to, Icon, selected, setSelected, open }) => {
       component={Link}
       to={to}
       sx={{
-        justifyContent: open ? "initial" : "center",
+        justifyContent: open || isMobile ? "initial" : "center",
+        mt:isMobile ? "40px" : "0px",
         px: 3.5,
         "&.Mui-selected": {
           backgroundColor: colors.greenAccent[700],
@@ -48,7 +47,9 @@ const Items = ({ title, to, Icon, selected, setSelected, open }) => {
       }}
     >
       <Icon style={{ width: "16px" }} />
-      {open && (
+      {isMobile?(
+        <Typography sx={{ ml: 1, whiteSpace: "nowrap" }}>{title}</Typography>
+      ):open && (
         <Typography sx={{ ml: 1, whiteSpace: "nowrap" }}>{title}</Typography>
       )}
     </ListItemButton>
@@ -59,25 +60,13 @@ function Sidebar() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+  
   const [open, setOpen] = useState(true);
   const [selected, setSelected] = useState("Dashboard");
-  const [isMobile,setIsMobile]=useState(false)
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      const mobile = window.innerWidth <= 768;
-      setIsMobile(mobile);
-      console.log("Mobile:", mobile); 
-    };
-  
-    window.addEventListener("resize", handleResize);
-    handleResize();
-  
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
   
   
   
@@ -85,7 +74,7 @@ function Sidebar() {
     <>
     {isMobile ? 
     <>
-    <Toolbar sx={{ position:"absolute", left:0,top:0, backgroundColor: colors.primary[400] }}>
+    <Toolbar sx={{ position:"absolute", left:0,top:0, backgroundColor:colors.primary[500], zIndex:50, width:"100%" }}>
       <IconButton onClick={toggleDrawer} sx={{ color: colors.grey[100] }}>
         <MenuIcon />
       </IconButton>
@@ -98,14 +87,14 @@ function Sidebar() {
     <Drawer
     variant="temporary"
     anchor="left"
-    open={open}
+    open={!open}
     onClose={toggleDrawer}
     sx={{
-      width:  open ? drawerWidth : collapsedWidth,
+      width:  drawerWidth,
       
       flexShrink: 0,
       "& .MuiDrawer-paper": {
-        width: open ? drawerWidth : collapsedWidth,
+        width: drawerWidth,
         boxSizing: "border-box",
         backgroundColor: colors.primary[400],
         color: "white",
@@ -152,6 +141,7 @@ function Sidebar() {
           selected={selected}
           setSelected={setSelected}
           open={open}
+          isMobile={isMobile}
         />
       ))}
     </List>
@@ -217,6 +207,7 @@ function Sidebar() {
           selected={selected}
           setSelected={setSelected}
           open={open}
+          isMobile={isMobile}
         />
       ))}
     </List>

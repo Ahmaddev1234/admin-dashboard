@@ -11,12 +11,12 @@ const index = () => {
     const theme=useTheme();
     const colors=tokens(theme.palette.mode);
     const columns= [
-        {field:"id", headerName:"ID"},
-        {field:"name", headerName:"NAME", flex:1, cellClassName:"name-cell"},
-        {field:"email", headerName:"EMAIL",flex:1 },
-        {field:"age", headerName:"AGE", type:"number", headerAlign:"left", align:"left"},
-        {field:"phone", headerName:"PHONE", flex:1},
-        {field:"access", headerName:"ACCESS LEVEL", flex:1, cellClassName:"accesstab", renderCell:({row:{access}})=>(
+        {field:"id", headerName:"ID",minWidth:70, maxWidth:70},
+        {field:"name", headerName:"NAME", flex:1, cellClassName:"name-cell", minWidth: 100},
+        {field:"email", headerName:"EMAIL",flex:1,minWidth: 150 },
+        {field:"age", headerName:"AGE", type:"number", headerAlign:"left", align:"left", minWidth: 50},
+        {field:"phone", headerName:"PHONE", flex:1, minWidth: 150},
+        {field:"access", headerName:"ACCESS LEVEL", flex:1, cellClassName:"accesstab", minWidth: 200, renderCell:({row:{access}})=>(
 
             <Box width="60%" m="0,auto" p="5px" display="flex" justifyContent="center" justifyItems="center"
             backgroundColor={access === "admin" ? colors.greenAccent[600] : colors.greenAccent[700] }
@@ -34,7 +34,7 @@ const index = () => {
   return (
     <Box m="20px">
       <Header title="Team" subtitle="Managing the team members"/>
-      <Box m="40px 0 0 0" height="75vh">
+      <Box m="40px 0 0 0" height="75vh" sx={{width:{xs:"90vw",md:"100%"}}} overflowX="scroll" display="flex">
         <DataGrid
         sx={{
             border: "none",
