@@ -14,9 +14,18 @@ import PieChart from './scenes/pieChart/index.jsx'
 import FAQ from './scenes/faq'
 import GeographyChart from './scenes/geographyChart/index.jsx'
 import Calender from './scenes/calender'
+import { useState } from 'react';
 
 function App() {
   const [theme,colorMode] = useMode();
+  const [widthCal,setWidthCal]=useState(240)
+
+  const width=(width)=>{
+    setWidthCal(width);
+  }
+
+  console.log(widthCal);
+  
   return (
     <Router>
     <ColorModeContext.Provider value={colorMode}>
@@ -25,10 +34,10 @@ function App() {
     <div className='app'>
       <main className='content' style={{display:"flex"}}>
         <div >
-        <Sidebar/>
+        <Sidebar width={width}/>
 
         </div>
-        <div style={{flexGrow:1}}>
+        <div style={{flexGrow:1,width: `calc(100% - ${widthCal}px)`}}>
 
         
         <Topbar/>

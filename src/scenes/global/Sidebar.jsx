@@ -59,7 +59,7 @@ const SidebarItem = ({ title, to, Icon, selected, setSelected, open, isMobile, c
   );
 };
 
-function Sidebar() {
+function Sidebar({width}) {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -68,6 +68,18 @@ function Sidebar() {
   const [selected, setSelected] = useState(
     localStorage.getItem("selectedItem") || "Dashboard"
   );
+ 
+
+  useEffect(() => {
+    const currentWidth = isMobile ? 0 : (open ? drawerWidth : collapsedWidth);
+    width(currentWidth); 
+  }, [open, isMobile]);
+  
+  
+
+
+
+
 
   useEffect(() => {
     localStorage.setItem("selectedItem", selected);
